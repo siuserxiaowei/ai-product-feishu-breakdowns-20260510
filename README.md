@@ -1,5 +1,70 @@
 # 2026-05-10 AI 产品飞书纪要拆解
 
+<!-- SIUSER-REPO-GUIDE:START -->
+## Repository Guide
+
+### What This Repository Does
+
+独立 GitHub Pages：2026-05-10 三篇飞书 AI 产品纪要的道法术器势拆解
+
+### Online Entry Points
+
+- GitHub repository: https://github.com/siuserxiaowei/ai-product-feishu-breakdowns-20260510
+- Live / GitHub Pages: https://siuserxiaowei.github.io/ai-product-feishu-breakdowns-20260510/
+- Default branch: `main`
+- Primary language: `HTML`
+- Topics: `ai`, `feishu`, `github-pages`, `knowledge-base`, `meeting-notes`, `static-site`
+
+### How To Read / Learn This Repository
+
+1. 先读本 README，确认项目目标、在线入口和本地运行方式。
+2. 打开上方 Live / GitHub Pages 链接，先从最终效果理解项目。
+3. 查看 `package.json` 的 scripts，确认开发、构建和预览命令。
+4. 如果要修改内容，先小范围改动，再运行本 README 中的验证命令。
+
+### Clone This Repository
+
+```bash
+git clone https://github.com/siuserxiaowei/ai-product-feishu-breakdowns-20260510.git
+cd ai-product-feishu-breakdowns-20260510
+```
+
+### Run Or View Locally
+
+```bash
+npm install
+npm run serve
+npm run build
+```
+
+### Repository Map
+
+| Path | Purpose |
+| --- | --- |
+| `README.md` | 项目入口说明，先读这里。 |
+| `package.json` | Node/前端项目配置和常用脚本。 |
+| `index.html` | 静态站首页或页面入口。 |
+| `data/` | 数据、索引或结构化内容。 |
+| `assets/` | 图片、样式、字体或页面资源。 |
+| `scripts/` | 构建、同步、生成或维护脚本。 |
+| `articles/` | 项目目录。 |
+| `config/` | 项目目录。 |
+| `links.json` | 项目文件。 |
+
+### Maintenance Notes
+
+- Keep this README in sync when the project purpose, live link, or run commands change.
+- Prefer small, focused commits when changing code, data, or generated pages.
+- Run the relevant build or validation command before publishing changes.
+- If this is a generated/static archive, update the source data first, then regenerate the public files.
+
+### Privacy And Safety
+
+- Do not commit API keys, tokens, passwords, cookies, private URLs, or internal account data.
+- Keep private source material out of public GitHub Pages output unless it has been explicitly cleared for publication.
+- When in doubt, run a quick secret scan such as `rg -n "token|secret|password|access_key|authorization"` before pushing.
+<!-- SIUSER-REPO-GUIDE:END -->
+
 这是一个独立公开仓库，用来保存 2026 年 5 月 10 日三篇飞书智能纪要的公开派生总结和“道、法、术、器、势”拆解。
 
 这个仓库的核心目的很简单：即使原飞书页面后续关闭公开访问，仍然可以通过自己的 GitHub 仓库和 GitHub Pages 长期查看已经整理好的结构化内容。
