@@ -87,6 +87,30 @@ function tagList(tags = []) {
   return `<div class="tags">${tags.map((tag) => `<span>${escapeHtml(tag)}</span>`).join("")}</div>`;
 }
 
+function formatListItem(item) {
+  if (item && typeof item === "object") {
+    const title = [item.type, item.value].filter(Boolean).join("：");
+    return `${escapeHtml(title)}${item.how ? `<p>${escapeHtml(item.how)}</p>` : ""}`;
+  }
+  return escapeHtml(item);
+}
+
+function listItems(items = []) {
+  return items.map((item) => `<li>${formatListItem(item)}</li>`).join("");
+}
+
+function renderTopicMap(article) {
+  const topicMap = article.topicMap || [];
+  if (!topicMap.length) return "";
+  return `<div class="topic-map">
+    ${topicMap.map((topic) => `<section>
+      <h4>${escapeHtml(topic.title)}</h4>
+      <p>${escapeHtml(topic.summary || "")}</p>
+      ${(topic.points || []).length ? `<div class="tags">${topic.points.map((point) => `<span>${escapeHtml(point)}</span>`).join("")}</div>` : ""}
+    </section>`).join("")}
+  </div>`;
+}
+
 function summaryCard(article) {
   const dims = DIMENSIONS.map(([key, label]) => {
     const item = article.fiveDimensions?.[key];
@@ -158,8 +182,11 @@ function renderConfig() {
 
   const body = `<main>
     <section class="page-title">
-      <p>GitHub Pages 配置</p>
+      <p>GitHub Pages 配置与离线备份</p>
       <h1>统一在线配置页</h1>
+      <div class="backup-notice">
+        这个页面不只保存链接，也保存三篇飞书纪要的结构化摘要、章节、行动项、学习重点、主题地图和“道法术器势”拆解。这里不发布原始飞书正文、临时鉴权链接或完整逐字稿，只保留已经整理过的公开派生内容，便于飞书页面后续不可访问时继续阅读。
+      </div>
       <div class="config-links">
         <a href="${BASE_URL}/">${BASE_URL}/</a>
         <a href="${REPO_URL}">${REPO_URL}</a>
@@ -168,9 +195,9 @@ function renderConfig() {
 
     <section class="config-layout">
       <div class="config-main">
-        <h2>三篇文章链接</h2>
+        <h2>三篇文章目录</h2>
         <div class="link-list">
-          ${links.map((link, index) => `<a class="link-row" href="${link.url}">
+          ${links.map((link, index) => `<a class="link-row" href="#${escapeHtml(link.slug)}">
             <strong>${index + 1}. ${escapeHtml(link.title)}</strong>
             <span>${escapeHtml(link.date)} · ${escapeHtml(link.slug)}</span>
           </a>`).join("")}
@@ -187,10 +214,22 @@ function renderConfig() {
           <dd>/</dd>
           <dt>数据端点</dt>
           <dd><a href="${BASE_URL}/data/articles.json">data/articles.json</a></dd>
+          <dt>完整备份</dt>
+          <dd>当前配置页已内嵌全部结构化总结</dd>
           <dt>本地构建</dt>
           <dd><code>npm run all</code></dd>
         </dl>
       </aside>
+    </section>
+
+    <section class="section">
+      <div class="section-heading">
+        <h2>完整结构化备份</h2>
+        <p>以下内容与各文章页同步生成，集中放在配置页，方便单页保存、复制和长期查看。</p>
+      </div>
+      <div class="backup-stack">
+        ${articles.map((article, index) => renderConfigArticle(article, index)).join("")}
+      </div>
     </section>
 
     <section class="section">
@@ -210,12 +249,53 @@ function renderConfig() {
   });
 }
 
-function dimensionBlock(article, key, label) {
+function renderConfigArticle(article, index) {
+  return `<article class="config-article" id="${escapeHtml(article.slug)}">
+    <header class="config-article-header">
+      <p>${index + 1} · ${escapeHtml(article.date)}</p>
+      <h2>${escapeHtml(article.title)}</h2>
+      <p class="config-article-link"><a href="${articleUrl(article)}">单篇在线页面</a></p>
+      <div class="article-summary">${escapeHtml(article.summary)}</div>
+      ${tagList(article.tags)}
+      ${(article.keywords || []).length ? `<h3>关键词</h3>${tagList(article.keywords)}` : ""}
+    </header>
+
+    <section class="config-section">
+      <h3>主题地图</h3>
+      ${renderTopicMap(article)}
+    </section>
+
+    <section class="config-article-grid">
+      <div>
+        <h3>章节结构</h3>
+        <ol class="timeline">
+          ${(article.chapters || []).map((chapter) => `<li>
+            <span>${escapeHtml(chapter.time || "")}</span>
+            <strong>${escapeHtml(chapter.title || "")}</strong>
+            <p>${escapeHtml(chapter.summary || "")}</p>
+          </li>`).join("")}
+        </ol>
+      </div>
+      <div>
+        <h3>行动项</h3>
+        <ul class="action-list">${listItems(article.actions)}</ul>
+        ${(article.learningFocus || []).length ? `<h3>学习重点</h3><ul class="action-list">${listItems(article.learningFocus)}</ul>` : ""}
+      </div>
+    </section>
+
+    <section class="config-section">
+      <h3>道法术器势完整拆解</h3>
+      ${DIMENSIONS.map(([key, label]) => dimensionBlock(article, key, label, `${article.slug}-${key}`)).join("")}
+    </section>
+  </article>`;
+}
+
+function dimensionBlock(article, key, label, id = key) {
   const item = article.fiveDimensions?.[key] || {};
   const points = item["拆解要点"] || [];
   const actions = item["行动清单"] || [];
   const evidence = item["关键证据"] || [];
-  return `<section class="dimension-block" id="${key}">
+  return `<section class="dimension-block" id="${escapeHtml(id)}">
     <h2>${label} · ${escapeHtml(item["核心判断"] || "")}</h2>
     ${points.length ? `<h3>拆解要点</h3><ul>${points.map((p) => `<li>${escapeHtml(p)}</li>`).join("")}</ul>` : ""}
     ${evidence.length ? `<h3>关键证据</h3><ul>${evidence.map((p) => `<li>${escapeHtml(p)}</li>`).join("")}</ul>` : ""}
@@ -251,7 +331,7 @@ function renderArticle(article) {
           <ul class="action-list">
             ${(article.actions || []).map((action) => `<li>${escapeHtml(action)}</li>`).join("")}
           </ul>
-          ${(article.learningFocus || []).length ? `<h2>学习重点</h2><ul class="action-list">${article.learningFocus.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>` : ""}
+          ${(article.learningFocus || []).length ? `<h2>学习重点</h2><ul class="action-list">${listItems(article.learningFocus)}</ul>` : ""}
         </div>
       </section>
 

@@ -5,7 +5,7 @@
 ## 在线入口
 
 - GitHub Pages 首页：https://siuserxiaowei.github.io/ai-product-feishu-breakdowns-20260510/
-- 在线配置页：https://siuserxiaowei.github.io/ai-product-feishu-breakdowns-20260510/config/
+- 在线配置页与完整备份页：https://siuserxiaowei.github.io/ai-product-feishu-breakdowns-20260510/config/
 - 数据端点：https://siuserxiaowei.github.io/ai-product-feishu-breakdowns-20260510/data/articles.json
 - 链接清单：https://siuserxiaowei.github.io/ai-product-feishu-breakdowns-20260510/links.json
 
@@ -20,11 +20,15 @@
 每篇文章按“道、法、术、器、势”拆解，包含：
 
 - 会议摘要
+- 关键词
+- 主题地图
 - 章节结构
 - 行动项
 - 学习重点
 - 五维拆解
 - 可复用动作
+
+`config/` 页面会把以上内容全部集中展开，不只是链接页。这样即使飞书原文后续关闭公开访问，也能通过自己的 GitHub Pages 阅读这些公开派生的结构化总结。
 
 ## 公开边界
 

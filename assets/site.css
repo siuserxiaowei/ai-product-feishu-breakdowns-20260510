@@ -301,6 +301,15 @@ main {
   font-weight: 700;
 }
 
+.backup-notice {
+  max-width: 900px;
+  margin-top: 22px;
+  padding: 18px 22px;
+  background: var(--surface);
+  border-left: 4px solid var(--accent-2);
+  color: var(--muted);
+}
+
 .config-layout {
   display: grid;
   grid-template-columns: minmax(0, 1fr) 360px;
@@ -343,6 +352,77 @@ main {
 .config-side dd {
   margin: 0 0 12px;
   font-weight: 700;
+}
+
+.backup-stack {
+  display: grid;
+  gap: 28px;
+}
+
+.config-article {
+  scroll-margin-top: 96px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  padding: clamp(22px, 4vw, 36px);
+  box-shadow: var(--shadow);
+}
+
+.config-article-header {
+  padding-bottom: 22px;
+  border-bottom: 1px solid var(--line);
+}
+
+.config-article-header > p {
+  margin: 0 0 10px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.config-article-header h2 {
+  margin: 0;
+  font-size: clamp(28px, 4vw, 44px);
+  line-height: 1.15;
+}
+
+.config-article-header h3,
+.config-section h3,
+.config-article-grid h3 {
+  margin: 22px 0 12px;
+  color: var(--accent);
+  font-size: 16px;
+}
+
+.config-section {
+  padding-top: 22px;
+}
+
+.topic-map {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.topic-map section {
+  padding: 16px;
+  background: var(--bg);
+  border: 1px solid var(--line);
+}
+
+.topic-map h4 {
+  margin: 0 0 8px;
+  font-size: 17px;
+}
+
+.topic-map p {
+  margin: 0 0 12px;
+  color: var(--muted);
+}
+
+.config-article-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(280px, 0.9fr);
+  gap: 24px;
+  padding-top: 22px;
 }
 
 .article-page {
@@ -389,6 +469,11 @@ main {
 }
 
 .timeline p {
+  margin: 4px 0 0;
+  color: var(--muted);
+}
+
+.action-list p {
   margin: 4px 0 0;
   color: var(--muted);
 }
@@ -450,6 +535,8 @@ main {
 
   .hero,
   .config-layout,
+  .config-article-grid,
+  .topic-map,
   .two-column {
     grid-template-columns: 1fr;
   }
