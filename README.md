@@ -1,69 +1,76 @@
 # 2026-05-10 AI 产品飞书纪要拆解
 
 <!-- SIUSER-REPO-GUIDE:START -->
-## Repository Guide
+## 项目介绍 / Project Introduction
 
-### What This Repository Does
-
+### 中文
 独立 GitHub Pages：2026-05-10 三篇飞书 AI 产品纪要的道法术器势拆解
 
-### Online Entry Points
+### English
+Standalone GitHub Pages site for Shu-Fa-Dao-Qi-Shi breakdowns of three Feishu AI product notes from 2026-05-10.
 
-- GitHub repository: https://github.com/siuserxiaowei/ai-product-feishu-breakdowns-20260510
-- Live / GitHub Pages: https://siuserxiaowei.github.io/ai-product-feishu-breakdowns-20260510/
-- Default branch: `main`
-- Primary language: `HTML`
-- Topics: `ai`, `feishu`, `github-pages`, `knowledge-base`, `meeting-notes`, `static-site`
+## 使用方式 / Usage
 
-### How To Read / Learn This Repository
+### 中文
+1. 先克隆仓库并安装 Node 依赖。
+2. 根据 `package.json` 中的 scripts 启动开发、构建或测试命令。
+3. 如果有在线入口，先对照线上页面理解最终效果，再回到源码修改。
 
-1. 先读本 README，确认项目目标、在线入口和本地运行方式。
-2. 打开上方 Live / GitHub Pages 链接，先从最终效果理解项目。
-3. 查看 `package.json` 的 scripts，确认开发、构建和预览命令。
-4. 如果要修改内容，先小范围改动，再运行本 README 中的验证命令。
+### English
+1. Clone the repository and install the Node dependencies.
+2. Use the scripts in `package.json` for development, build, or tests.
+3. If a live link exists, review the deployed page first, then make source changes.
 
-### Clone This Repository
+## 入口与元信息 / Entry Points & Metadata
+
+- GitHub 仓库 / Repository: https://github.com/siuserxiaowei/ai-product-feishu-breakdowns-20260510
+- Live / 在线入口：https://siuserxiaowei.github.io/ai-product-feishu-breakdowns-20260510/
+- 默认分支 / Default branch: `main`
+- 主要语言 / Primary language: `HTML`
+- 可见性 / Visibility: `public`
+- 仓库类型 / Repository type: `source`
+- Topics / 主题：`ai`, `feishu`, `github-pages`, `knowledge-base`, `meeting-notes`, `static-site`
+
+## 本地运行 / Local Run
 
 ```bash
 git clone https://github.com/siuserxiaowei/ai-product-feishu-breakdowns-20260510.git
 cd ai-product-feishu-breakdowns-20260510
-```
-
-### Run Or View Locally
-
-```bash
 npm install
-npm run serve
 npm run build
 ```
 
-### Repository Map
+## 仓库结构 / Repository Map
 
-| Path | Purpose |
-| --- | --- |
-| `README.md` | 项目入口说明，先读这里。 |
-| `package.json` | Node/前端项目配置和常用脚本。 |
-| `index.html` | 静态站首页或页面入口。 |
-| `data/` | 数据、索引或结构化内容。 |
-| `assets/` | 图片、样式、字体或页面资源。 |
-| `scripts/` | 构建、同步、生成或维护脚本。 |
-| `articles/` | 项目目录。 |
-| `config/` | 项目目录。 |
-| `links.json` | 项目文件。 |
+| 路径 / Path | 中文说明 | English |
+| --- | --- | --- |
+| `README.md` | 项目入口说明，先读这里。 | Main project entry point and orientation. |
+| `package.json` | Node/前端项目配置、依赖和脚本。 | Node/frontend dependencies and scripts. |
+| `index.html` | 静态站首页或页面入口。 | Static-site homepage or entry page. |
+| `assets` | 图片、样式、数据等资源。 | Images, styles, data, and other assets. |
+| `data` | 数据、索引或结构化内容。 | Data, indexes, or structured content. |
+| `scripts` | 构建、同步、生成或维护脚本。 | Build, sync, generation, or maintenance scripts. |
+| `articles` | 项目文件或目录。 | Project file or directory. |
+| `config` | 项目文件或目录。 | Project file or directory. |
+| `.nojekyll` | 项目文件或目录。 | Project file or directory. |
+| `links.json` | 项目文件或目录。 | Project file or directory. |
 
-### Maintenance Notes
+## 维护备注 / Maintenance Notes
 
-- Keep this README in sync when the project purpose, live link, or run commands change.
-- Prefer small, focused commits when changing code, data, or generated pages.
-- Run the relevant build or validation command before publishing changes.
-- If this is a generated/static archive, update the source data first, then regenerate the public files.
+- 中文：当项目目标、在线入口、运行命令或目录结构变化时，同步更新本说明。
+- English: Keep this guide updated when the project purpose, live link, run commands, or structure changes.
+- 中文：修改代码、数据或生成页面后，优先运行相关构建、测试或校验命令。
+- English: After changing code, data, or generated pages, run the relevant build, test, or validation command.
 
-### Privacy And Safety
+## 安全与隐私 / Safety & Privacy
 
-- Do not commit API keys, tokens, passwords, cookies, private URLs, or internal account data.
-- Keep private source material out of public GitHub Pages output unless it has been explicitly cleared for publication.
-- When in doubt, run a quick secret scan such as `rg -n "token|secret|password|access_key|authorization"` before pushing.
+- 中文：不要提交 API key、token、密码、cookie、私有链接或内部账号资料。
+- English: Do not commit API keys, tokens, passwords, cookies, private URLs, or internal account data.
+- 中文：公开 GitHub Pages 前，确认资料已脱敏并允许公开。
+- English: Before publishing GitHub Pages output, confirm the material is redacted and cleared for public release.
 <!-- SIUSER-REPO-GUIDE:END -->
+
+
 
 这是一个独立公开仓库，用来保存 2026 年 5 月 10 日三篇飞书智能纪要的公开派生总结和“道、法、术、器、势”拆解。
 
